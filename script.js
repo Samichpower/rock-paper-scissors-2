@@ -36,6 +36,9 @@ function game() {
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
       playerScore++;
       return "You win! Scissors beats Paper!";
+    } else {
+      computerScore++;
+      return "Round forfeit! Computer wins!"
     }
   }
 
