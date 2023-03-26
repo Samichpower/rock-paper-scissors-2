@@ -1,10 +1,15 @@
 function getComputerChoice() {
-  let score = Math.floor(Math.random() * 3)
-  if (score === 0) {
+  let choice = Math.floor(Math.random() * 3)
+  if (choice === 0) {
     return "rock";
-  } else if (score === 1) {
+  } else if (choice === 1) {
     return "paper";
-  } else if (score === 2) {
+  } else if (choice === 2) {
     return "scissors";
   }
+}
+
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
 }
