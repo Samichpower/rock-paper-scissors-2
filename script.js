@@ -48,6 +48,7 @@ function game() {
   }
 
   rockBtn.addEventListener('click', () => {
+    clearOldGame();
     const newPara = document.createElement('p');
     newPara.textContent = playRound('rock', getComputerChoice());
     resultsContainer.appendChild(newPara);
@@ -62,6 +63,7 @@ function game() {
   })
 
   paperBtn.addEventListener('click', () => {
+    clearOldGame();
     const newPara = document.createElement('p');
     newPara.textContent = playRound('paper', getComputerChoice())
     resultsContainer.appendChild(newPara);
@@ -76,6 +78,7 @@ function game() {
   });
 
   scissorsBtn.addEventListener('click', () => {
+    clearOldGame();
     const newPara = document.createElement('p');
     newPara.textContent = playRound('scissors', getComputerChoice());
     resultsContainer.appendChild(newPara);
@@ -88,6 +91,10 @@ function game() {
       roundCounter = 0;
     }
   })
+
+  function clearOldGame() {
+    if (roundCounter === 0) resultsContainer.innerHTML = '';
+  }
 
   function checkForWinner() {
     let winner = document.createElement('p');
