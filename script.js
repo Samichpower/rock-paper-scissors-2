@@ -52,6 +52,10 @@ function game() {
     resultsContainer.appendChild(newPara);
     const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
     resultsContainer.appendChild(scores);
+
+    if (playerScore === 5 || computerScore === 5) {
+      resultsContainer.appendChild(checkForWinner());
+    }
   })
 
   paperBtn.addEventListener('click', () => {
@@ -60,6 +64,10 @@ function game() {
     resultsContainer.appendChild(newPara);
     const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
     resultsContainer.appendChild(scores);
+
+    if (playerScore === 5 || computerScore === 5) {
+      resultsContainer.appendChild(checkForWinner());
+    }
   });
 
   scissorsBtn.addEventListener('click', () => {
@@ -93,9 +101,6 @@ function game() {
       return winner;
     }
   }
-  
-
-  
 }
 
 game();
