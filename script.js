@@ -1,6 +1,7 @@
-let rockBtn = document.querySelector('.rock');
-let paperBtn = document.querySelector('.paper');
-let scissorsBtn = document.querySelector('.scissors');
+const rockBtn = document.querySelector('.rock');
+const paperBtn = document.querySelector('.paper');
+const scissorsBtn = document.querySelector('.scissors');
+const resultsContainer = document.querySelector('.results-container');
 
 
 function getComputerChoice() {
@@ -46,15 +47,27 @@ function game() {
   }
 
   rockBtn.addEventListener('click', () => {
-    console.log(playRound('rock', getComputerChoice()));
+    const newPara = document.createElement('p');
+    newPara.textContent = playRound('rock', getComputerChoice());
+    resultsContainer.appendChild(newPara);
+    const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
+    resultsContainer.appendChild(scores);
   })
 
   paperBtn.addEventListener('click', () => {
-    console.log(playRound('paper', getComputerChoice()));
+    const newPara = document.createElement('p');
+    newPara.textContent = playRound('paper', getComputerChoice())
+    resultsContainer.appendChild(newPara);
+    const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
+    resultsContainer.appendChild(scores);
   });
 
   scissorsBtn.addEventListener('click', () => {
-    console.log(playRound('scissors', getComputerChoice()));
+    const newPara = document.createElement('p');
+    newPara.textContent = playRound('scissors', getComputerChoice());
+    resultsContainer.appendChild(newPara);
+    const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
+    resultsContainer.appendChild(scores);
   })
 
 
@@ -63,6 +76,7 @@ function game() {
   //   let computerSelection = getComputerChoice();
   //   console.log(playRound(playerSelection, computerSelection));
   // }
+
 
   if (playerScore < computerScore) {
     console.log(`LOSER! TOTAL SCORES: ${playerScore} ${computerScore}`);
