@@ -1,3 +1,8 @@
+let playerRock = document.querySelector('.rock');
+let playerPaper = document.querySelector('.paper');
+let playerScissors = document.querySelector('.scissors');
+
+
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3)
   if (choice === 0) {
@@ -40,11 +45,14 @@ function game() {
     }
   }
 
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
-    let computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-  }
+
+
+  
+  // for (let i = 0; i < 5; i++) {
+  //   let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
+  //   let computerSelection = getComputerChoice();
+  //   console.log(playRound(playerSelection, computerSelection));
+  // }
 
   if (playerScore < computerScore) {
     console.log(`LOSER! TOTAL SCORES: ${playerScore} ${computerScore}`);
