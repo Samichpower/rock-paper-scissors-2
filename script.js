@@ -16,6 +16,7 @@ function getComputerChoice() {
 }
 
 function game() {
+  let roundCounter = 0;
   let playerScore = 0;
   let computerScore = 0;
 
@@ -53,8 +54,10 @@ function game() {
     const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
     resultsContainer.appendChild(scores);
 
-    if (playerScore === 5 || computerScore === 5) {
+    roundCounter++;
+    if (roundCounter === 5) {
       resultsContainer.appendChild(checkForWinner());
+      roundCounter = 0;
     }
   })
 
@@ -65,8 +68,10 @@ function game() {
     const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
     resultsContainer.appendChild(scores);
 
-    if (playerScore === 5 || computerScore === 5) {
+    roundCounter++;
+    if (roundCounter === 5) {
       resultsContainer.appendChild(checkForWinner());
+      roundCounter = 0;
     }
   });
 
@@ -77,8 +82,10 @@ function game() {
     const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
     resultsContainer.appendChild(scores);
 
-    if (playerScore === 5 || computerScore === 5) {
+    roundCounter++
+    if (roundCounter === 5) {
       resultsContainer.appendChild(checkForWinner());
+      roundCounter = 0;
     }
   })
 
