@@ -47,6 +47,30 @@ function game() {
     }
   }
 
+  function checkForWinner() {
+    let winner = document.createElement('p');
+    if (playerScore < computerScore) {
+      winner.textContent = `LOSER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
+      playerScore = 0;
+      computerScore = 0;
+      return winner;
+    } else if (playerScore > computerScore) {
+      winner.textContent = `WINNER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
+      playerScore = 0;
+      computerScore = 0;
+      return winner;
+    } else if (playerScore === computerScore) {
+      winner.textContent = `IT'S A TIE! TOTAL SCORES: ${playerScore} to ${computerScore}`;
+      playerScore = 0;
+      computerScore = 0;
+      return winner;
+    }
+  }
+
+  function clearOldGame() {
+    if (roundCounter === 0) resultsContainer.innerHTML = '';
+  }
+
   rockBtn.addEventListener('click', () => {
     clearOldGame();
     const newPara = document.createElement('p');
@@ -91,30 +115,6 @@ function game() {
       roundCounter = 0;
     }
   })
-
-  function clearOldGame() {
-    if (roundCounter === 0) resultsContainer.innerHTML = '';
-  }
-
-  function checkForWinner() {
-    let winner = document.createElement('p');
-    if (playerScore < computerScore) {
-      winner.textContent = `LOSER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
-      playerScore = 0;
-      computerScore = 0;
-      return winner;
-    } else if (playerScore > computerScore) {
-      winner.textContent = `WINNER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
-      playerScore = 0;
-      computerScore = 0;
-      return winner;
-    } else if (playerScore === computerScore) {
-      winner.textContent = `IT'S A TIE! TOTAL SCORES: ${playerScore} to ${computerScore}`;
-      playerScore = 0;
-      computerScore = 0;
-      return winner;
-    }
-  }
 }
 
 game();
