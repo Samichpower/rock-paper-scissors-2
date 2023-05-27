@@ -68,23 +68,34 @@ function game() {
     resultsContainer.appendChild(newPara);
     const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
     resultsContainer.appendChild(scores);
+
+    if (playerScore === 5 || computerScore === 5) {
+      resultsContainer.appendChild(checkForWinner());
+    }
   })
 
-
-  // for (let i = 0; i < 5; i++) {
-  //   let playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase();
-  //   let computerSelection = getComputerChoice();
-  //   console.log(playRound(playerSelection, computerSelection));
-  // }
-
-
-  if (playerScore < computerScore) {
-    console.log(`LOSER! TOTAL SCORES: ${playerScore} ${computerScore}`);
-  } else if (playerScore > computerScore) {
-    console.log(`WINNER! TOTAL SCORES: ${playerScore} ${computerScore}`);
-  } else if (playerScore === computerScore) {
-    console.log(`IT'S A TIE! TOTAL SCORES: ${playerScore} ${computerScore}`);
+  function checkForWinner() {
+    let winner = document.createElement('p');
+    if (playerScore < computerScore) {
+      winner.textContent = `LOSER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
+      playerScore = 0;
+      computerScore = 0;
+      return winner;
+    } else if (playerScore > computerScore) {
+      winner.textContent = `WINNER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
+      playerScore = 0;
+      computerScore = 0;
+      return winner;
+    } else if (playerScore === computerScore) {
+      winner.textContent = `IT'S A TIE! TOTAL SCORES: ${playerScore} to ${computerScore}`;
+      playerScore = 0;
+      computerScore = 0;
+      return winner;
+    }
   }
+  
+
+  
 }
 
 game();
