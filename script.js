@@ -67,53 +67,31 @@ function game() {
     }
   }
 
-  function clearOldGame() {
+  function displayWinner(choice) {
     if (roundCounter === 0) resultsContainer.innerHTML = '';
+    const newPara = document.createElement('p');
+    newPara.textContent = playRound(choice, getComputerChoice());
+    resultsContainer.appendChild(newPara);
+    const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
+    resultsContainer.appendChild(scores);
+    
+    roundCounter++;
+    if (roundCounter === 5) {
+      resultsContainer.appendChild(checkForWinner());
+      roundCounter = 0;
+    }
   }
 
   rockBtn.addEventListener('click', () => {
-    clearOldGame();
-    const newPara = document.createElement('p');
-    newPara.textContent = playRound('rock', getComputerChoice());
-    resultsContainer.appendChild(newPara);
-    const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
-    resultsContainer.appendChild(scores);
-
-    roundCounter++;
-    if (roundCounter === 5) {
-      resultsContainer.appendChild(checkForWinner());
-      roundCounter = 0;
-    }
+    displayWinner('rock');
   })
 
   paperBtn.addEventListener('click', () => {
-    clearOldGame();
-    const newPara = document.createElement('p');
-    newPara.textContent = playRound('paper', getComputerChoice())
-    resultsContainer.appendChild(newPara);
-    const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
-    resultsContainer.appendChild(scores);
-
-    roundCounter++;
-    if (roundCounter === 5) {
-      resultsContainer.appendChild(checkForWinner());
-      roundCounter = 0;
-    }
+    displayWinner('paper');
   });
 
   scissorsBtn.addEventListener('click', () => {
-    clearOldGame();
-    const newPara = document.createElement('p');
-    newPara.textContent = playRound('scissors', getComputerChoice());
-    resultsContainer.appendChild(newPara);
-    const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
-    resultsContainer.appendChild(scores);
-
-    roundCounter++
-    if (roundCounter === 5) {
-      resultsContainer.appendChild(checkForWinner());
-      roundCounter = 0;
-    }
+    displayWinner('scissors');
   })
 }
 
