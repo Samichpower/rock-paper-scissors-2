@@ -93,17 +93,17 @@ function game() {
 
   rockBtn.addEventListener('click', () => {
     displayWinner('rock');
-    playerContainer.innerHTML = '<img src="images/rock.jpg">'
+    playerContainer.innerHTML = '<img src="images/rock.jpg" alt="A nice brown rock.">'
   })
 
   paperBtn.addEventListener('click', () => {
     displayWinner('paper');
-    playerContainer.innerHTML = '<img src="images/paper.png">'
+    playerContainer.innerHTML = '<img src="images/paper.png" alt="Blank paper with a folded corner.">'
   });
 
   scissorsBtn.addEventListener('click', () => {
     displayWinner('scissors');
-    playerContainer.innerHTML = '<img src="images/scissors.png">'
+    playerContainer.innerHTML = '<img src="images/scissors.png" alt="Black handled scissors.">'
   })
 }
 
