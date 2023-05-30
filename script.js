@@ -25,24 +25,31 @@ function game() {
       return `It's a tie! You both picked ${computerSelection}!`;
     } else if (playerSelection === "rock" && computerSelection === "paper") {
       computerScore++;
+      roundCounter++;
       return "You lose! Paper beats Rock!";
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
       playerScore++;
+      roundCounter++;
       return "You win! Rock beats Scissors!";
     } else if (playerSelection === "paper" && computerSelection === "rock") {
       playerScore++;
+      roundCounter++;
       return "You win! Paper beats Rock!";
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
       computerScore++;
+      roundCounter++;
       return "You lose! Scissors beats Paper!";
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
       computerScore++;
+      roundCounter++;
       return "You lose! Rock beats Scissors!";
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
       playerScore++;
+      roundCounter++;
       return "You win! Scissors beats Paper!";
     } else {
       computerScore++;
+      roundCounter++;
       return "Round forfeit! Computer wins!"
     }
   }
@@ -75,7 +82,6 @@ function game() {
     const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
     resultsContainer.appendChild(scores);
     
-    roundCounter++;
     if (roundCounter === 5) {
       resultsContainer.appendChild(checkForWinner());
       roundCounter = 0;
