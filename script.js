@@ -3,6 +3,9 @@ const paperBtn = document.querySelector('.paper');
 const scissorsBtn = document.querySelector('.scissors');
 const resultsContainer = document.querySelector('.results-container');
 
+const playerContainer = document.querySelector('.player-choice');
+const computerContainer = document.querySelector('.computer-choice');
+
 
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3)
@@ -90,14 +93,17 @@ function game() {
 
   rockBtn.addEventListener('click', () => {
     displayWinner('rock');
+    playerContainer.innerHTML = '<img src="images/rock.jpg">'
   })
 
   paperBtn.addEventListener('click', () => {
     displayWinner('paper');
+    playerContainer.innerHTML = '<img src="images/paper.png">'
   });
 
   scissorsBtn.addEventListener('click', () => {
     displayWinner('scissors');
+    playerContainer.innerHTML = '<img src="images/scissors.png">'
   })
 }
 
