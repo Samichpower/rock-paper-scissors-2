@@ -24,6 +24,10 @@ body {
   border-radius: 4px;
 }
 
+.round-container {
+  align-self: flex-start;
+}
+
 .main-container {
   display: flex;
   justify-content: space-around;
@@ -40,6 +44,8 @@ body {
   display: flex;
   justify-content: space-evenly;
 }
+
+
 
 .player-choice, .computer-choice {
   height: 400px;
