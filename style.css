@@ -45,8 +45,6 @@ body {
   justify-content: space-evenly;
 }
 
-
-
 .player-choice, .computer-choice {
   height: 400px;
   width: 400px;
@@ -59,4 +57,9 @@ img {
   display: block;
   margin: 0 auto;
   max-width: 375px;
+}
+
+
+.winner {
+  border: 4px solid yellow;
 }

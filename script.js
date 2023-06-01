@@ -23,36 +23,50 @@ function game() {
   let playerScore = 0;
   let computerScore = 0;
 
+  function flashWinner(winner) {
+    winner.classList.add('winner');
+    setTimeout(() => {
+      winner.classList.remove('winner');
+    }, 500);
+  }
+
   function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
       return `It's a tie! You both picked ${computerSelection}!`;
     } else if (playerSelection === "rock" && computerSelection === "paper") {
       computerScore++;
       roundCounter++;
+      flashWinner(computerContainer);
       return "You lose! Paper beats Rock!";
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
       playerScore++;
       roundCounter++;
+      flashWinner(playerContainer);
       return "You win! Rock beats Scissors!";
     } else if (playerSelection === "paper" && computerSelection === "rock") {
       playerScore++;
       roundCounter++;
+      flashWinner(playerContainer);
       return "You win! Paper beats Rock!";
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
       computerScore++;
       roundCounter++;
+      flashWinner(computerContainer);
       return "You lose! Scissors beats Paper!";
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
       computerScore++;
       roundCounter++;
+      flashWinner(computerContainer);
       return "You lose! Rock beats Scissors!";
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
       playerScore++;
       roundCounter++;
+      flashWinner(playerContainer);
       return "You win! Scissors beats Paper!";
     } else {
       computerScore++;
       roundCounter++;
+      flashWinner(computerContainer);
       return "Round forfeit! Computer wins!"
     }
   }
@@ -108,3 +122,10 @@ function game() {
 }
 
 game();
+
+
+
+
+//The player will click their choice then click play round to actually play the round. On click, the computers choice will be made and compared against the players and the winner will flash yellow for a second and their score will increase by one, then the round will reset. Upon reset, the round counter will increment by one and both their images will be cleared.
+
+//Need to wait to call playRound function until the Play Round button is pressed.
