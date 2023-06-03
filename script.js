@@ -83,8 +83,8 @@ function game() {
     }
   }
 
-  function checkForWinner() {
-    let winner = document.createElement('p');
+  function displayWinner() {
+    const winner = document.createElement('p');
     if (playerScore < computerScore) {
       winner.textContent = `LOSER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
       playerScore = 0;
@@ -103,13 +103,6 @@ function game() {
     }
   }
 
-  function displayWinner() {
-    if (roundCounter >= 5) {
-      resultsContainer.appendChild(checkForWinner());
-      roundCounter = 0;
-    }
-  }
-
   function displayComputerChoice(computerSelection) {
     if (computerSelection === 'rock') {
       computerContainer.innerHTML = '<img src="images/rock.jpg" alt="A nice brown rock.">';
@@ -125,6 +118,9 @@ function game() {
     displayComputerChoice(computerSelection)
     playRound('rock', computerSelection);
     playerContainer.innerHTML = '<img src="images/rock.jpg" alt="A nice brown rock.">';
+    if (playerScore >= 5 || computerScore >= 5) {
+      resultsContainer.appendChild(displayWinner());
+    }
   })
 
   paperBtn.addEventListener('click', () => {
@@ -132,6 +128,9 @@ function game() {
     displayComputerChoice(computerSelection)
     playRound('paper', computerSelection);
     playerContainer.innerHTML = '<img src="images/paper.png" alt="Blank paper with a folded corner.">';
+    if (playerScore >= 5 || computerScore >= 5) {
+      resultsContainer.appendChild(displayWinner());
+    }
   });
 
   scissorsBtn.addEventListener('click', () => {
@@ -139,6 +138,9 @@ function game() {
     displayComputerChoice(computerSelection)
     playRound('scissors', computerSelection);
     playerContainer.innerHTML = '<img src="images/scissors.png" alt="Black handled scissors.">';
+    if (playerScore >= 5 || computerScore >= 5) {
+      resultsContainer.appendChild(displayWinner());
+    }
   })
 }
 
@@ -147,5 +149,5 @@ game();
 
 
 
-//The player will click their choice and it will immediatly return the winner and display the results and stuff. 
+//Make it first to 5 to win rather than best of 5.
 //The middle button will start a new game. Once roundCounter === 5 the player won't be able to play any more rounds. How to display the final winner?
