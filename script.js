@@ -27,7 +27,7 @@ function game() {
     winner.classList.add('winner');
     setTimeout(() => {
       winner.classList.remove('winner');
-    }, 750);
+    }, 400);
   }
 
   function playRound(playerSelection, computerSelection) {
@@ -113,7 +113,6 @@ function game() {
     displayComputerChoice(computerSelection)
     playRound('rock', computerSelection);
     playerContainer.innerHTML = '<img src="images/rock.jpg" alt="A nice brown rock.">';
-    console.log(computerSelection);
   })
 
   paperBtn.addEventListener('click', () => {
@@ -136,4 +135,5 @@ game();
 
 
 
-//The player will click their choice and it will immediatly return the winner and display the results and stuff. The middle button will simply progress to the next round and reset everything.
+//The player will click their choice and it will immediatly return the winner and display the results and stuff. 
+//The middle button will start a new game. Once roundCounter === 5 the player won't be able to play any more rounds. How to display the final winner?
