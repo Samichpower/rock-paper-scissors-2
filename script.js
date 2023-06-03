@@ -27,7 +27,7 @@ function game() {
     winner.classList.add('winner');
     setTimeout(() => {
       winner.classList.remove('winner');
-    }, 500);
+    }, 750);
   }
 
   function playRound(playerSelection, computerSelection) {
@@ -91,33 +91,43 @@ function game() {
     }
   }
 
-  function displayWinner(choice) {
-    if (roundCounter === 0) resultsContainer.innerHTML = '';
-    const newPara = document.createElement('p');
-    newPara.textContent = playRound(choice, getComputerChoice());
-    resultsContainer.appendChild(newPara);
-    const scores = document.createTextNode(`Player Score: ${playerScore} :: Computer Score: ${computerScore}`);
-    resultsContainer.appendChild(scores);
-    
-    if (roundCounter === 5) {
+  function displayWinner() {
+    if (roundCounter >= 5) {
       resultsContainer.appendChild(checkForWinner());
       roundCounter = 0;
     }
   }
 
+  function displayComputerChoice(computerSelection) {
+    if (computerSelection === 'rock') {
+      computerContainer.innerHTML = '<img src="images/rock.jpg" alt="A nice brown rock.">';
+    } else if (computerSelection === 'paper') {
+      computerContainer.innerHTML = '<img src="images/paper.png" alt="Blank paper with a folded corner.">';
+    } else if (computerSelection === 'scissors') {
+      computerContainer.innerHTML = '<img src="images/scissors.png" alt="Black handled scissors.">';
+    }
+  }
+
   rockBtn.addEventListener('click', () => {
-    displayWinner('rock');
-    playerContainer.innerHTML = '<img src="images/rock.jpg" alt="A nice brown rock.">'
+    const computerSelection = getComputerChoice();
+    displayComputerChoice(computerSelection)
+    playRound('rock', computerSelection);
+    playerContainer.innerHTML = '<img src="images/rock.jpg" alt="A nice brown rock.">';
+    console.log(computerSelection);
   })
 
   paperBtn.addEventListener('click', () => {
-    displayWinner('paper');
-    playerContainer.innerHTML = '<img src="images/paper.png" alt="Blank paper with a folded corner.">'
+    const computerSelection = getComputerChoice();
+    displayComputerChoice(computerSelection)
+    playRound('paper', computerSelection);
+    playerContainer.innerHTML = '<img src="images/paper.png" alt="Blank paper with a folded corner.">';
   });
 
   scissorsBtn.addEventListener('click', () => {
-    displayWinner('scissors');
-    playerContainer.innerHTML = '<img src="images/scissors.png" alt="Black handled scissors.">'
+    const computerSelection = getComputerChoice();
+    displayComputerChoice(computerSelection)
+    playRound('scissors', computerSelection);
+    playerContainer.innerHTML = '<img src="images/scissors.png" alt="Black handled scissors.">';
   })
 }
 
@@ -126,6 +136,4 @@ game();
 
 
 
-//The player will click their choice then click play round to actually play the round. On click, the computers choice will be made and compared against the players and the winner will flash yellow for a second and their score will increase by one, then the round will reset. Upon reset, the round counter will increment by one and both their images will be cleared.
-
-//Need to wait to call playRound function until the Play Round button is pressed.
+//The player will click their choice and it will immediatly return the winner and display the results and stuff. The middle button will simply progress to the next round and reset everything.
