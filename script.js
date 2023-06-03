@@ -2,7 +2,7 @@ const rockBtn = document.querySelector('.rock');
 const paperBtn = document.querySelector('.paper');
 const scissorsBtn = document.querySelector('.scissors');
 const newGameBtn = document.querySelector('.new-game');
-const resultsContainer = document.querySelector('.results-container');
+const winnerSplash = document.querySelector('.winner-splash');
 
 const playerContainer = document.querySelector('.player-choice');
 const computerContainer = document.querySelector('.computer-choice');
@@ -35,14 +35,16 @@ function game() {
     }, 200);
 
     playerContainer.innerHTML = '';
-    computerContainer.innerHTML = '';
     playerScore = 0;
     playerScoreDisplay.textContent = playerScore;
+    computerContainer.innerHTML = '';
     computerScore = 0;
     computerScoreDisplay.textContent = computerScore;
+
+    winnerSplash.innerHTML = '';
   });
 
-  function flashWinner(winner) {
+  function flashRoundWinner(winner) {
     winner.classList.add('winner');
     setTimeout(() => {
       winner.classList.remove('winner');
@@ -51,58 +53,44 @@ function game() {
 
   function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-      flashWinner(computerContainer);
-      flashWinner(playerContainer);
+      flashRoundWinner(computerContainer);
+      flashRoundWinner(playerContainer);
       return `It's a tie! You both picked ${computerSelection}!`;
     } else if (playerSelection === "rock" && computerSelection === "paper") {
       computerScore++;
       computerScoreDisplay.textContent = computerScore;
-      flashWinner(computerContainer);
+      flashRoundWinner(computerContainer);
       return "You lose! Paper beats Rock!";
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
       playerScore++;
       playerScoreDisplay.textContent = playerScore;
-      flashWinner(playerContainer);
+      flashRoundWinner(playerContainer);
       return "You win! Rock beats Scissors!";
     } else if (playerSelection === "paper" && computerSelection === "rock") {
       playerScore++;
       playerScoreDisplay.textContent = playerScore;
-      flashWinner(playerContainer);
+      flashRoundWinner(playerContainer);
       return "You win! Paper beats Rock!";
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
       computerScore++;
       computerScoreDisplay.textContent = computerScore;
-      flashWinner(computerContainer);
+      flashRoundWinner(computerContainer);
       return "You lose! Scissors beats Paper!";
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
       computerScore++;
       computerScoreDisplay.textContent = computerScore;
-      flashWinner(computerContainer);
+      flashRoundWinner(computerContainer);
       return "You lose! Rock beats Scissors!";
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
       playerScore++;
       playerScoreDisplay.textContent = playerScore;
-      flashWinner(playerContainer);
+      flashRoundWinner(playerContainer);
       return "You win! Scissors beats Paper!";
     } else {
       computerScore++;
       computerScoreDisplay.textContent = computerScore;
-      flashWinner(computerContainer);
+      flashRoundWinner(computerContainer);
       return "Round forfeit! Computer wins!"
-    }
-  }
-
-  function displayWinner() {
-    const winner = document.createElement('p');
-    if (playerScore < computerScore) {
-      winner.textContent = `LOSER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
-      return winner;
-    } else if (playerScore > computerScore) {
-      winner.textContent = `WINNER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
-      return winner;
-    } else if (playerScore === computerScore) {
-      winner.textContent = `IT'S A TIE! TOTAL SCORES: ${playerScore} to ${computerScore}`;
-      return winner;
     }
   }
 
@@ -116,13 +104,27 @@ function game() {
     }
   }
 
+  function displayGameWinner() {
+    const winner = document.createElement('p');
+    if (playerScore < computerScore) {
+      winner.textContent = `LOSER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
+      return winner;
+    } else if (playerScore > computerScore) {
+      winner.textContent = `WINNER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
+      return winner;
+    } else if (playerScore === computerScore) {
+      winner.textContent = `IT'S A TIE! TOTAL SCORES: ${playerScore} to ${computerScore}`;
+      return winner;
+    }
+  }
+
   rockBtn.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     displayComputerChoice(computerSelection)
     playRound('rock', computerSelection);
     playerContainer.innerHTML = '<img src="images/rock.jpg" alt="A nice brown rock.">';
     if (playerScore >= 5 || computerScore >= 5) {
-      resultsContainer.appendChild(displayWinner());
+      winnerSplash.appendChild(displayGameWinner());
     }
   })
 
@@ -132,7 +134,7 @@ function game() {
     playRound('paper', computerSelection);
     playerContainer.innerHTML = '<img src="images/paper.png" alt="Blank paper with a folded corner.">';
     if (playerScore >= 5 || computerScore >= 5) {
-      resultsContainer.appendChild(displayWinner());
+      winnerSplash.appendChild(displayGameWinner());
     }
   });
 
@@ -142,7 +144,7 @@ function game() {
     playRound('scissors', computerSelection);
     playerContainer.innerHTML = '<img src="images/scissors.png" alt="Black handled scissors.">';
     if (playerScore >= 5 || computerScore >= 5) {
-      resultsContainer.appendChild(displayWinner());
+      winnerSplash.appendChild(displayGameWinner());
     }
   })
 }
