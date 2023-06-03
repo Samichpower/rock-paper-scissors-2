@@ -6,6 +6,9 @@ const resultsContainer = document.querySelector('.results-container');
 const playerContainer = document.querySelector('.player-choice');
 const computerContainer = document.querySelector('.computer-choice');
 
+const playerScoreDisplay = document.querySelector('.player-score');
+const computerScoreDisplay = document.querySelector('.computer-score');
+
 
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3)
@@ -37,36 +40,43 @@ function game() {
       return `It's a tie! You both picked ${computerSelection}!`;
     } else if (playerSelection === "rock" && computerSelection === "paper") {
       computerScore++;
+      computerScoreDisplay.textContent = computerScore;
       roundCounter++;
       flashWinner(computerContainer);
       return "You lose! Paper beats Rock!";
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
       playerScore++;
+      playerScoreDisplay.textContent = playerScore;
       roundCounter++;
       flashWinner(playerContainer);
       return "You win! Rock beats Scissors!";
     } else if (playerSelection === "paper" && computerSelection === "rock") {
       playerScore++;
+      playerScoreDisplay.textContent = playerScore;
       roundCounter++;
       flashWinner(playerContainer);
       return "You win! Paper beats Rock!";
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
       computerScore++;
+      computerScoreDisplay.textContent = computerScore;
       roundCounter++;
       flashWinner(computerContainer);
       return "You lose! Scissors beats Paper!";
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
       computerScore++;
+      computerScoreDisplay.textContent = computerScore;
       roundCounter++;
       flashWinner(computerContainer);
       return "You lose! Rock beats Scissors!";
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
       playerScore++;
+      playerScoreDisplay.textContent = playerScore;
       roundCounter++;
       flashWinner(playerContainer);
       return "You win! Scissors beats Paper!";
     } else {
       computerScore++;
+      computerScoreDisplay.textContent = computerScore;
       roundCounter++;
       flashWinner(computerContainer);
       return "Round forfeit! Computer wins!"
