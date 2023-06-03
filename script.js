@@ -26,6 +26,22 @@ function game() {
   let playerScore = 0;
   let computerScore = 0;
 
+  newGameBtn.addEventListener('click', () => {
+    playerContainer.classList.add('winner');
+    computerContainer.classList.add('winner');
+    setTimeout(() => {
+      playerContainer.classList.remove('winner');
+      computerContainer.classList.remove('winner');
+    }, 200);
+
+    playerContainer.innerHTML = '';
+    computerContainer.innerHTML = '';
+    playerScore = 0;
+    playerScoreDisplay.textContent = playerScore;
+    computerScore = 0;
+    computerScoreDisplay.textContent = computerScore;
+  });
+
   function flashWinner(winner) {
     winner.classList.add('winner');
     setTimeout(() => {
@@ -80,18 +96,12 @@ function game() {
     const winner = document.createElement('p');
     if (playerScore < computerScore) {
       winner.textContent = `LOSER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
-      playerScore = 0;
-      computerScore = 0;
       return winner;
     } else if (playerScore > computerScore) {
       winner.textContent = `WINNER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
-      playerScore = 0;
-      computerScore = 0;
       return winner;
     } else if (playerScore === computerScore) {
       winner.textContent = `IT'S A TIE! TOTAL SCORES: ${playerScore} to ${computerScore}`;
-      playerScore = 0;
-      computerScore = 0;
       return winner;
     }
   }
@@ -138,8 +148,6 @@ function game() {
 }
 
 game();
-
-
 
 
 //start game button just has to set the state of the game to that of a new game. scores to 0, blank the containers
