@@ -2,7 +2,9 @@ const rockBtn = document.querySelector('.rock');
 const paperBtn = document.querySelector('.paper');
 const scissorsBtn = document.querySelector('.scissors');
 const newGameBtn = document.querySelector('.new-game');
-const winnerSplash = document.querySelector('.winner-splash');
+
+const finalSplash = document.querySelector('.final-splash');
+const finalScores = document.querySelector('.final-scores')
 
 const playerContainer = document.querySelector('.player-choice');
 const computerContainer = document.querySelector('.computer-choice');
@@ -41,7 +43,7 @@ function game() {
     computerScore = 0;
     computerScoreDisplay.textContent = computerScore;
 
-    winnerSplash.innerHTML = '';
+    finalSplash.innerHTML = '';
   });
 
   function flashRoundWinner(winner) {
@@ -119,32 +121,35 @@ function game() {
   }
 
   rockBtn.addEventListener('click', () => {
+    if (playerScore >= 5 || computerScore >= 5) return;
     const computerSelection = getComputerChoice();
     displayComputerChoice(computerSelection)
     playRound('rock', computerSelection);
     playerContainer.innerHTML = '<img src="images/rock.jpg" alt="A nice brown rock.">';
     if (playerScore >= 5 || computerScore >= 5) {
-      winnerSplash.appendChild(displayGameWinner());
+      finalSplash.appendChild(displayGameWinner());
     }
   })
 
   paperBtn.addEventListener('click', () => {
+    if (playerScore >= 5 || computerScore >= 5) return;
     const computerSelection = getComputerChoice();
     displayComputerChoice(computerSelection)
     playRound('paper', computerSelection);
     playerContainer.innerHTML = '<img src="images/paper.png" alt="Blank paper with a folded corner.">';
     if (playerScore >= 5 || computerScore >= 5) {
-      winnerSplash.appendChild(displayGameWinner());
+      finalSplash.appendChild(displayGameWinner());
     }
   });
 
   scissorsBtn.addEventListener('click', () => {
+    if (playerScore >= 5 || computerScore >= 5) return;
     const computerSelection = getComputerChoice();
     displayComputerChoice(computerSelection)
     playRound('scissors', computerSelection);
     playerContainer.innerHTML = '<img src="images/scissors.png" alt="Black handled scissors.">';
     if (playerScore >= 5 || computerScore >= 5) {
-      winnerSplash.appendChild(displayGameWinner());
+      finalSplash.appendChild(displayGameWinner());
     }
   })
 }
