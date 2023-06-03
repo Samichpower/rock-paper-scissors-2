@@ -149,5 +149,5 @@ game();
 
 
 
-//Make it first to 5 to win rather than best of 5.
 //The middle button will start a new game. Once roundCounter === 5 the player won't be able to play any more rounds. How to display the final winner?
+//start game button just has to set the state of the game to that of a new game. scores to 0, blank the containers
