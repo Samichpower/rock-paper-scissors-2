@@ -1,6 +1,7 @@
 const rockBtn = document.querySelector('.rock');
 const paperBtn = document.querySelector('.paper');
 const scissorsBtn = document.querySelector('.scissors');
+const newGameBtn = document.querySelector('.new-game');
 const resultsContainer = document.querySelector('.results-container');
 
 const playerContainer = document.querySelector('.player-choice');
@@ -22,7 +23,6 @@ function getComputerChoice() {
 }
 
 function game() {
-  let roundCounter = 0;
   let playerScore = 0;
   let computerScore = 0;
 
@@ -41,43 +41,36 @@ function game() {
     } else if (playerSelection === "rock" && computerSelection === "paper") {
       computerScore++;
       computerScoreDisplay.textContent = computerScore;
-      roundCounter++;
       flashWinner(computerContainer);
       return "You lose! Paper beats Rock!";
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
       playerScore++;
       playerScoreDisplay.textContent = playerScore;
-      roundCounter++;
       flashWinner(playerContainer);
       return "You win! Rock beats Scissors!";
     } else if (playerSelection === "paper" && computerSelection === "rock") {
       playerScore++;
       playerScoreDisplay.textContent = playerScore;
-      roundCounter++;
       flashWinner(playerContainer);
       return "You win! Paper beats Rock!";
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
       computerScore++;
       computerScoreDisplay.textContent = computerScore;
-      roundCounter++;
       flashWinner(computerContainer);
       return "You lose! Scissors beats Paper!";
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
       computerScore++;
       computerScoreDisplay.textContent = computerScore;
-      roundCounter++;
       flashWinner(computerContainer);
       return "You lose! Rock beats Scissors!";
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
       playerScore++;
       playerScoreDisplay.textContent = playerScore;
-      roundCounter++;
       flashWinner(playerContainer);
       return "You win! Scissors beats Paper!";
     } else {
       computerScore++;
       computerScoreDisplay.textContent = computerScore;
-      roundCounter++;
       flashWinner(computerContainer);
       return "Round forfeit! Computer wins!"
     }
@@ -149,5 +142,4 @@ game();
 
 
 
-//The middle button will start a new game. Once roundCounter === 5 the player won't be able to play any more rounds. How to display the final winner?
 //start game button just has to set the state of the game to that of a new game. scores to 0, blank the containers
