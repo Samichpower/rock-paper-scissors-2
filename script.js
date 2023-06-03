@@ -27,11 +27,11 @@ function game() {
   let computerScore = 0;
 
   newGameBtn.addEventListener('click', () => {
-    playerContainer.classList.add('winner');
-    computerContainer.classList.add('winner');
+    playerContainer.classList.add('round-winner');
+    computerContainer.classList.add('round-winner');
     setTimeout(() => {
-      playerContainer.classList.remove('winner');
-      computerContainer.classList.remove('winner');
+      playerContainer.classList.remove('round-winner');
+      computerContainer.classList.remove('round-winner');
     }, 200);
 
     playerContainer.innerHTML = '';
@@ -45,9 +45,9 @@ function game() {
   });
 
   function flashRoundWinner(winner) {
-    winner.classList.add('winner');
+    winner.classList.add('round-winner');
     setTimeout(() => {
-      winner.classList.remove('winner');
+      winner.classList.remove('round-winner');
     }, 400);
   }
 
@@ -150,6 +150,3 @@ function game() {
 }
 
 game();
-
-
-//start game button just has to set the state of the game to that of a new game. scores to 0, blank the containers
