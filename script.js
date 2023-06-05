@@ -109,8 +109,10 @@ function game() {
   function displayGameWinner() {
     if (playerScore < computerScore) {
       finalSplash.textContent = `LOSER!`;
+      finalScores.textContent = `${playerScore} to ${computerScore}`
     } else if (playerScore > computerScore) {
       finalSplash.textContent = 'WINNER!';
+      finalScores.textContent = `${playerScore} to ${computerScore}`
     }
   }
 
