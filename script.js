@@ -44,6 +44,7 @@ function game() {
     computerScoreDisplay.textContent = computerScore;
 
     finalSplash.innerHTML = '';
+    finalScores.innerHTML = '';
   });
 
   function flashRoundWinner(winner) {
