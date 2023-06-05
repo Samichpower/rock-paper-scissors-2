@@ -107,16 +107,10 @@ function game() {
   }
 
   function displayGameWinner() {
-    const winner = document.createElement('p');
     if (playerScore < computerScore) {
-      winner.textContent = `LOSER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
-      return winner;
+      finalSplash.textContent = `LOSER!`;
     } else if (playerScore > computerScore) {
-      winner.textContent = `WINNER! TOTAL SCORES: ${playerScore} to ${computerScore}`;
-      return winner;
-    } else if (playerScore === computerScore) {
-      winner.textContent = `IT'S A TIE! TOTAL SCORES: ${playerScore} to ${computerScore}`;
-      return winner;
+      finalSplash.textContent = 'WINNER!';
     }
   }
 
@@ -127,7 +121,8 @@ function game() {
     playRound('rock', computerSelection);
     playerContainer.innerHTML = '<img src="images/rock.jpg" alt="A nice brown rock.">';
     if (playerScore >= 5 || computerScore >= 5) {
-      finalSplash.appendChild(displayGameWinner());
+      displayGameWinner();
+      return;
     }
   })
 
@@ -138,7 +133,8 @@ function game() {
     playRound('paper', computerSelection);
     playerContainer.innerHTML = '<img src="images/paper.png" alt="Blank paper with a folded corner.">';
     if (playerScore >= 5 || computerScore >= 5) {
-      finalSplash.appendChild(displayGameWinner());
+      displayGameWinner();
+      return;
     }
   });
 
@@ -149,7 +145,8 @@ function game() {
     playRound('scissors', computerSelection);
     playerContainer.innerHTML = '<img src="images/scissors.png" alt="Black handled scissors.">';
     if (playerScore >= 5 || computerScore >= 5) {
-      finalSplash.appendChild(displayGameWinner());
+      displayGameWinner();
+      return;
     }
   })
 }

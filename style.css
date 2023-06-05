@@ -74,17 +74,9 @@ img {
 }
 
 .final-splash {
-  font-size: 200px;
+  font-size: 250px;
+  text-align: center;
 }
-
-.winner {
-  color: green;
-}
-
-.loser {
-  color: red;
-}
-
 
 
 .round-winner {
